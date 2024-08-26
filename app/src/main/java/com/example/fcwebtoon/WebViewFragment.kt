@@ -29,8 +29,10 @@ class WebViewFragment: Fragment() {
         Log.d("WebViewFragment", "onViewCreated")
 
         binding.webView.settings.javaScriptEnabled = true
-        binding.webView.webViewClient = WebViewClient()
-        binding.webView.loadUrl("https://google.com")
+        binding.webView.webViewClient = WebToonWebViewClient(binding.progressBar)
+        binding.webView.loadUrl("https://comic.naver.com/webtoon/detail?titleId=183559&no=630&week=mon")
+
+
 
     }
 
@@ -42,6 +44,14 @@ class WebViewFragment: Fragment() {
     override fun onStop() {
         super.onStop()
         Log.d("WebViewFragment", "onStop")
+    }
+
+    fun canGoBack(): Boolean {
+        return binding.webView.canGoBack()
+    }
+
+    fun goBack() {
+        binding.webView.goBack()
     }
 
 }
